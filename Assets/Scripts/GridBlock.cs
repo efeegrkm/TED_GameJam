@@ -1,7 +1,9 @@
+using System.Collections; // Coroutine için eklendi
+using System; // Action (Geri çaðýrma) için eklendi
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class GridBlock : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class GridBlock : MonoBehaviour
 {
     [Header("Baþlangýç Koordinatý")]
     public int currentX;
@@ -13,7 +15,8 @@ public class GridBlock : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndD
 
     private GridPuzzle puzzleManager;
     private RectTransform rectTransform;
-    private Vector2 startDragPos;
+    private Image shadeImage;
+    private float originalAlpha;
 
     public void Init(GridPuzzle manager, float width, float height)
     {
@@ -21,60 +24,69 @@ public class GridBlock : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndD
         rectTransform = GetComponent<RectTransform>();
 
         rectTransform.sizeDelta = new Vector2(width, height);
-
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
         rectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        if (transform.childCount > 0)
+        {
+            shadeImage = transform.GetChild(0).GetComponent<Image>();
+            if (shadeImage != null)
+            {
+                originalAlpha = shadeImage.color.a;
+                shadeImage.gameObject.SetActive(false);
+            }
+        }
     }
 
-    public void UpdateVisualPosition()
+    public void SetShade(bool isActive, bool isFirstSelection = true)
+    {
+        if (shadeImage == null) return;
+
+        shadeImage.gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            Color targetColor = Color.black;//Frame eklemesi
+            targetColor.a = originalAlpha;
+            shadeImage.color = targetColor;
+        }
+    }
+
+    // --- DEÐÝÞEN KISIM: Animasyonlu hareket eklendi ---
+    public void UpdateVisualPosition(bool instant = true, Action onComplete = null)
     {
         if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
 
         float xPos = (currentX * rectTransform.sizeDelta.x) + (rectTransform.sizeDelta.x / 2f);
         float yPos = (currentY * rectTransform.sizeDelta.y) + (rectTransform.sizeDelta.y / 2f);
+        Vector2 targetPos = new Vector2(xPos, yPos);
 
-        rectTransform.anchoredPosition = new Vector2(xPos, yPos);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        startDragPos = eventData.position;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Vector2 dragVector = eventData.position - startDragPos;
-
-        if (dragVector.magnitude < 30f) return;
-
-        int dx = 0;
-        int dy = 0;
-
-        if (Mathf.Abs(dragVector.x) > Mathf.Abs(dragVector.y))
+        if (instant)
         {
-            dx = dragVector.x > 0 ? 1 : -1;
+            rectTransform.anchoredPosition = targetPos;
+            onComplete?.Invoke();
         }
         else
         {
-            dy = dragVector.y > 0 ? 1 : -1;
+            StartCoroutine(AnimateMove(targetPos, puzzleManager.swapDuration, onComplete));
         }
+    }
 
-        int targetGridX = currentX + dx;
-        int targetGridY = currentY + dy;
+    private IEnumerator AnimateMove(Vector2 targetPos, float duration, Action onComplete)
+    {
+        Vector2 startPos = rectTransform.anchoredPosition;
+        float elapsedTime = 0f;
 
-        if (targetGridX >= 0 && targetGridX < puzzleManager.xGridCount &&
-            targetGridY >= 0 && targetGridY < puzzleManager.yGridCount)
+        while (elapsedTime < duration)
         {
-            GridBlock adjacentBlock = puzzleManager.GetBlockAt(targetGridX, targetGridY);
-            if (adjacentBlock != null)
-            {
-                puzzleManager.SwapBlocks(this, adjacentBlock);
-            }
+            rectTransform.anchoredPosition = Vector2.Lerp(startPos, targetPos, (elapsedTime / duration));
+            elapsedTime += Time.deltaTime;
+            yield return null; // Bir sonraki frame'i bekle
         }
+
+        // Animasyon bitince tam hedefe oturt ve haber ver
+        rectTransform.anchoredPosition = targetPos;
+        onComplete?.Invoke();
     }
 }
