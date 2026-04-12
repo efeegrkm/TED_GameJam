@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,6 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovementManager : MonoBehaviour
 {
     public static PlayerMovementManager Instance { get; private set; }
+
+    public event EventHandler OnPlayerMoved;
+    public event EventHandler OnPlayerStoppedMoving;
 
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float moveSpeed = 6f;
@@ -38,7 +42,11 @@ public class PlayerMovementManager : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.CurrentState != GameState.Exploring) return;
+        if (GameManager.Instance.CurrentState != GameState.Exploring) 
+        {
+            OnPlayerStoppedMoving?.Invoke(this, null);
+            return;
+        }
 
         MovePlayer();
         ApplyGravity(); 
@@ -67,6 +75,9 @@ public class PlayerMovementManager : MonoBehaviour
 
         if (movementDir != Vector3.zero)
         {
+            Debug.Log("IS MOVING");
+            OnPlayerMoved?.Invoke(this, null);
+
             List<RaycastHit> hits = GetHitRaycasts(movementDir);
             bool isHit = hits.Count > 0;
 
@@ -77,6 +88,10 @@ public class PlayerMovementManager : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(movementDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
+        }
+        else
+        {
+            OnPlayerStoppedMoving?.Invoke(this, null);
         }
     }
 
