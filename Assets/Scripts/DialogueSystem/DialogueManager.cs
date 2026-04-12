@@ -157,7 +157,8 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        GameManager.Instance.ChangeState(GameState.Exploring);
+        if(GameManager.Instance.CurrentState == GameState.Dialogue)
+            GameManager.Instance.ChangeState(GameState.Exploring);
         dialoguePanel.SetActive(false);
     }
 }

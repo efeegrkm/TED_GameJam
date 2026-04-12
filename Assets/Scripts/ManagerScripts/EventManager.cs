@@ -73,4 +73,26 @@ public class EventManager : MonoBehaviour
 
         DialogueManager.Instance.StartDialogue(conversation);
     }
+
+    public void whaleOn1()
+    {
+        WhaleManager.Instance.EnterWhaleMode();
+    }
+
+    public void restrictedKraken()
+    {
+        List<DialogueLine> conversation = new List<DialogueLine>
+        {
+            new DialogueLine("Whale", "Krakene tükürürürüm seni, yolunu deðiþtir."),
+            new DialogueLine("Prenses", "...")
+        };
+
+        DialogueManager.Instance.StartDialogue(conversation);
+        GameManager.Instance.ChangeState(GameState.OnWhale);
+    }
+
+    public void startIsland2()
+    {
+
+    }
 }

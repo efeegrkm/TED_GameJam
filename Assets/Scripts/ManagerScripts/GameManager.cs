@@ -6,7 +6,8 @@ public enum GameState
     Paused,  
     Map,
     Puzzle,    
-    Dialogue   
+    Dialogue,
+    OnWhale
 }
 
 public class GameManager : MonoBehaviour
