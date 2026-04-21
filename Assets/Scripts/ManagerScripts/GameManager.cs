@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
@@ -29,17 +31,16 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         CurrentState = newState;
-        Debug.Log("[GameManager] Oyun Durumu Değişti: " + CurrentState);
-
-        if (newState == GameState.Exploring)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if(newState != GameState.Exploring)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            PlayerMovementManager.Instance.StopMovement();
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            PlayerMovementManager.Instance.ResumeMovement();
+            //EventManager.Instance.map.SetActive(false);
         }
     }
 }

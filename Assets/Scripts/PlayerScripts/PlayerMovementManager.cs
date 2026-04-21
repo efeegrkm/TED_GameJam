@@ -12,17 +12,19 @@ public class PlayerMovementManager : MonoBehaviour
 
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float moveSpeed = 6f;
-    [SerializeField] private float rotationSpeed = 10f; 
+    [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float playerRadius = 0.5f;
 
     private PlayerMovementActions playerMovementActions;
     private CharacterController characterController;
-    private Camera mainCamera; 
+    private Camera mainCamera;
 
     private Vector2 inputMoveVector;
 
     private float playerHeight = 1.3f;
     private Vector3 velocity = new(0f, -2f, 0f);
+
+    private bool canMove = true;
 
     private void Awake()
     {
@@ -42,14 +44,24 @@ public class PlayerMovementManager : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.CurrentState != GameState.Exploring) 
+        if (GameManager.Instance.CurrentState != GameState.Exploring)
         {
             OnPlayerStoppedMoving?.Invoke(this, null);
             return;
         }
 
         MovePlayer();
-        ApplyGravity(); 
+        ApplyGravity();
+    }
+
+    public void StopMovement()
+    {
+        canMove = false;
+    }
+
+    public void ResumeMovement()
+    {
+        canMove = true;
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext context)
@@ -59,6 +71,12 @@ public class PlayerMovementManager : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (!canMove)
+        {
+            OnPlayerStoppedMoving?.Invoke(this, null);
+            return;
+        }
+
         float xMoveInput = inputMoveVector.x;
         float yMoveInput = inputMoveVector.y;
 

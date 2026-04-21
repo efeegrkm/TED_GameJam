@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
-using System; // --- YENÝ EKLENDÝ: Action kullanabilmek için ---
+using System;
 
 [System.Serializable]
 public class Speaker
@@ -49,7 +49,6 @@ public class DialogueManager : MonoBehaviour
     private string currentFullText = "";
     private Coroutine typingCoroutine;
 
-    // --- YENÝ EKLENDÝ: Diyalog bittiðinde çalýþacak metodu tutan deðiþken ---
     private Action onDialogueCompleteCallback;
 
     private void Awake()
@@ -70,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         bool skipOrNextPressed = false;
 
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) skipOrNextPressed = true;
-        if (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)) skipOrNextPressed = true;
+        if (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame)) skipOrNextPressed = true;
 
         if (skipOrNextPressed)
         {
@@ -89,6 +88,8 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowSingleLine(string speakerName, string text)
     {
+        if (dialoguePanel.activeInHierarchy) return;
+
         linesQueue.Clear();
         linesQueue.Enqueue(new DialogueLine(speakerName, text));
         StartDialogueSequence();
@@ -96,9 +97,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(List<DialogueLine> dialogueLines, Action onComplete = null)
     {
+        if (dialoguePanel.activeInHierarchy) return;
+
         GameManager.Instance.ChangeState(GameState.Dialogue);
 
-        // Bize verilen metodu, diyalog bitince çaðýrmak üzere saklýyoruz
         onDialogueCompleteCallback = onComplete;
 
         linesQueue.Clear();
@@ -157,11 +159,14 @@ public class DialogueManager : MonoBehaviour
         int count = 0;
         foreach (char letter in sentence.ToCharArray())
         {
-            if(count%2 == 0)
+            if (count % 2 == 0)
             {
                 SoundManager.Instance.PlayAudio();
             }
             dialogueText.text += letter;
+
+            count++;
+
             yield return new WaitForSeconds(typingSpeed);
         }
 
@@ -175,12 +180,11 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
 
-        // --- YENÝ EKLENDÝ: Eðer sakladýðýmýz bir metot varsa, onu þimdi çalýþtýr ---
         if (onDialogueCompleteCallback != null)
         {
             Action tempCallback = onDialogueCompleteCallback;
-            onDialogueCompleteCallback = null; // Tekrar çaðrýlmamasý için önce temizle
-            tempCallback.Invoke(); // Metodu çalýþtýr!
+            onDialogueCompleteCallback = null;
+            tempCallback.Invoke();
         }
     }
 }

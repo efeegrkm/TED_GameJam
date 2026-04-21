@@ -322,87 +322,108 @@ public class GridPuzzle : MonoBehaviour
     private void FinishedPuzzleSuccessfully()
     {
         string puzzleIndex = this.gameObject.tag;
+        GameManager.Instance.ChangeState(GameState.Exploring);
         initiateCurrentPuzzleFinish(puzzleIndex);
         isPuzzleActive = false;
         foreach (var block in blocks) block.SetShade(false);
         if (linesContainer != null) linesContainer.SetActive(false);
         if (arrowIndicator != null) arrowIndicator.gameObject.SetActive(false);
-        GameManager.Instance.ChangeState(GameState.Exploring);
     }
     private void initiateCurrentPuzzleFinish(string puzzleIndex)
     {
-        switch(puzzleIndex)
+        switch (puzzleIndex)
         {
             case "puzzle 1":
+                PlayerMovementManager.Instance.StopMovement();
                 mapYama1.SetActive(true);
+                EventManager.Instance.mapReceived[0] = true;
                 List<DialogueLine> conversation = new List<DialogueLine>
                 {
-                    new DialogueLine("Hayalet", "Bu kadar akıllı olduğunu bilmiyoordum aşkitom."),
+                    new DialogueLine("Hayalet", "Bu kadar akıllı olduğunu bilmiyordum aşkitom."),
                     new DialogueLine("Hayalet", "Sonraki 4 bulmaca bu kadar kolay olsa keşke..."),
+                    new DialogueLine("Hayalet", "Sana birleştirdiğin harita parçalarını üzerinde toplaman için tüm haritanın bir taslağını veriyorum bu sana yol gösterecek."),
+                    new DialogueLine("Hayalet", "'M' ile üzerinde harita parçalarını birleştirdiğin harita taslağını açabilirsin."),
+                    new DialogueLine("Hayalet", "Her bulduğun yeni haritada bi sonraki adanın haritasının olduğu sandıkların yerleri işaretli olacak."),
+                    new DialogueLine("Hayalet", "En azından öyle umuyorum..."),
                     new DialogueLine("Prenses", "Hmm...")
                 };
                 DialogueManager.Instance.StartDialogue(conversation, () =>
                 {
                     this.gameObject.SetActive(false);
+                    PlayerMovementManager.Instance.ResumeMovement();
                 });
                 break;
             case "puzzle 2":
+                PlayerMovementManager.Instance.StopMovement();
                 mapYama2.SetActive(true);
+                EventManager.Instance.mapReceived[1] = true;
                 List<DialogueLine> conversation1 = new List<DialogueLine>
                 {
-                    new DialogueLine("Prenses", "2. harita da tamam olmal�."),
-                    new DialogueLine("Hayalet", "Her geçen an ümidim artıyor 'M' ye basarak tamamladığın haritaları görebilirsin."),
-                    new DialogueLine("Hayalet", "Sahilde bir dostum seni bekliyor... Haritayı tamamladığına göre diğer adaya geçmeye hazırsın.")
+                    new DialogueLine("Prenses", "2. harita da tamam."),
+                    new DialogueLine("Hayalet", "Her geçen an ümidim artıyor. Haritaya 2. parçayı da ekle."),
+                    new DialogueLine("Hayalet", "Ha bu arada... Otiyle aranızdaki ufak meseleyi çozdum."),
+                    new DialogueLine("Hayalet", "Oti adalar arası seyahat edebilmen için tek çaremiz..."),
+                    new DialogueLine("Prenses", "Ay tamam be. Alttan alirim biraz baligini."),
+                    new DialogueLine("Hayalet", "..."),
+                    new DialogueLine("Hayalet", "Oti seni bekliyor... Haritayı tamamladığına göre diğer adaya geçmeye hazırsın.")
                 };
                 DialogueManager.Instance.StartDialogue(conversation1, () =>
                 {
                     this.gameObject.SetActive(false);
+                    PlayerMovementManager.Instance.ResumeMovement();
                 });
                 break;
             case "puzzle 3":
+                PlayerMovementManager.Instance.StopMovement();
+                mapYama3.SetActive(true);
+                EventManager.Instance.mapReceived[2] = true;
+                EventManager.Instance.mapAssured = true;
                 List<DialogueLine> conversation4 = new List<DialogueLine>
                 {
                     new DialogueLine("Prenses", "3.map de halloldu.")
                 };
                 DialogueManager.Instance.StartDialogue(conversation4, () =>
                 {
-                    mapYama3.SetActive(true);
                     this.gameObject.SetActive(false);
+                    PlayerMovementManager.Instance.ResumeMovement();
                 });
                 
                 break;
             case "puzzle 4":
+                PlayerMovementManager.Instance.StopMovement();
+                mapYama4.SetActive(true);
+                EventManager.Instance.mapReceived[3] = true;
+                EventManager.Instance.mapAssured = true;
                 List<DialogueLine> conversation5 = new List<DialogueLine>
                 {
                     new DialogueLine("Prenses", "4.map de halloldu.")
                 };
                 DialogueManager.Instance.StartDialogue(conversation5, () =>
                 {
-                    mapYama4.SetActive(true);
                     this.gameObject.SetActive(false);
+                    PlayerMovementManager.Instance.ResumeMovement();
                 });
                 break;
             case "puzzle 5":
+                PlayerMovementManager.Instance.StopMovement();
+                mapYama5.SetActive(true);
+                EventManager.Instance.mapReceived[4] = true;
+                EventManager.Instance.mapAssured = true;
                 List<DialogueLine> conversation6 = new List<DialogueLine>
                 {
-                    new DialogueLine("Prenses", "5.map de halloldu.")
+                    new DialogueLine("Prenses", "Sonunda..."),
+                    new DialogueLine("Prenses", "Bu neydi kız!! Neyse ki çok zeki bir prensesim..."),
+                    new DialogueLine("Prenses", "Haritanın tamamını birleştirdim. Şimdi sadece Otinin ağzına son bir kez girmek kaldı."),
                 };
                 DialogueManager.Instance.StartDialogue(conversation6, () =>
                 {
-                    mapYama5.SetActive(true);
+                    EventManager.Instance.mapFinishEventTrigger = true;
                     this.gameObject.SetActive(false);
+                    PlayerMovementManager.Instance.ResumeMovement();    
                 });
                 break;
             case "puzzle 6":
-                List<DialogueLine> conversation7 = new List<DialogueLine>
-                {
-                    new DialogueLine("Prenses", "Uyama vaktin geldi.")
-                };
-                DialogueManager.Instance.StartDialogue(conversation7, () =>
-                {
-                    animatorMan.SetTrigger("diril");
-                    this.gameObject.SetActive(false);
-                });
+                EventManager.Instance.initiateFinalPuzzleFinish(this.gameObject);
                 break;
             default:
                 Debug.LogWarning("Bilinmeyen puzzle index'i: " + puzzleIndex);

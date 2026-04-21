@@ -27,116 +27,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'rig|idle' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'DEF-thigh.L' has scale animation that will
-      be discarded.\n\t'DEF-thigh.L.001' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'DEF-shin.L' has scale animation
-      that will be discarded.\n\t'DEF-shin.L.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-foot.L' has scale
-      animation that will be discarded.\n\t'DEF-thigh.R' has scale animation that
-      will be discarded.\n\t'DEF-thigh.R.001' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'DEF-shin.R' has scale animation
-      that will be discarded.\n\t'DEF-shin.R.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-foot.R' has scale
-      animation that will be discarded.\n\t'DEF-upper_arm.L' has scale animation
-      that will be discarded.\n\t'DEF-upper_arm.L.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-forearm.L' has scale
-      animation that will be discarded.\n\t'DEF-forearm.L.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-hand.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.R' has scale
-      animation that will be discarded.\n\t'DEF-upper_arm.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.R'
-      has scale animation that will be discarded.\n\t'DEF-forearm.R.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.R'
-      has scale animation that will be discarded.\n\nClip 'rig|mutlu' has import
-      animation warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'MCH-spine.001' has translation
-      animation that will be discarded.\n\t'MCH-spine.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'MCH-spine'
-      has translation animation that will be discarded.\n\t'MCH-spine' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-thigh.L'
-      has scale animation that will be discarded.\n\t'DEF-thigh.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-shin.L'
-      has scale animation that will be discarded.\n\t'DEF-shin.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-foot.L'
-      has scale animation that will be discarded.\n\t'DEF-toe.L' has scale animation
-      that will be discarded.\n\t'DEF-thigh.R' has scale animation that will be discarded.\n\t'DEF-thigh.R.001'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-shin.R'
-      has scale animation that will be discarded.\n\t'DEF-shin.R.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-foot.R'
-      has scale animation that will be discarded.\n\t'DEF-toe.R' has scale animation
-      that will be discarded.\n\t'MCH-spine.002' has translation animation that will
-      be discarded.\n\t'MCH-spine.002' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\t'MCH-spine.003' has translation animation
-      that will be discarded.\n\t'MCH-spine.003' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'MCH-ROT-neck' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'MCH-ROT-head'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-upper_arm.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.L'
-      has scale animation that will be discarded.\n\t'DEF-forearm.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.R' has scale
-      animation that will be discarded.\n\t'DEF-upper_arm.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.R'
-      has scale animation that will be discarded.\n\t'DEF-forearm.R.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.R'
-      has scale animation that will be discarded.\n\nClip 'rig|run' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'MCH-spine.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'MCH-spine'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-thigh.L'
-      has scale animation that will be discarded.\n\t'DEF-thigh.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-shin.L'
-      has scale animation that will be discarded.\n\t'DEF-shin.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-foot.L'
-      has scale animation that will be discarded.\n\t'DEF-thigh.R' has scale animation
-      that will be discarded.\n\t'DEF-thigh.R.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-shin.R' has scale
-      animation that will be discarded.\n\t'DEF-shin.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-foot.R'
-      has scale animation that will be discarded.\n\t'MCH-spine.002' has translation
-      animation that will be discarded.\n\t'MCH-spine.002' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'MCH-spine.003'
-      has translation animation that will be discarded.\n\t'MCH-spine.003' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'MCH-ROT-neck'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'MCH-ROT-head'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-upper_arm.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.L'
-      has scale animation that will be discarded.\n\t'DEF-forearm.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.R' has scale
-      animation that will be discarded.\n\t'DEF-upper_arm.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.R'
-      has scale animation that will be discarded.\n\t'DEF-forearm.R.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.R'
-      has scale animation that will be discarded.\n\nClip 'rig|\xFCzg\xFCn' has import
-      animation warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'DEF-thigh.L' has scale animation
-      that will be discarded.\n\t'DEF-thigh.L.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-shin.L' has scale
-      animation that will be discarded.\n\t'DEF-shin.L.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-foot.L'
-      has scale animation that will be discarded.\n\t'DEF-thigh.R' has scale animation
-      that will be discarded.\n\t'DEF-thigh.R.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-shin.R' has scale
-      animation that will be discarded.\n\t'DEF-shin.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-foot.R'
-      has scale animation that will be discarded.\n\t'head' has translation animation
-      that will be discarded.\n\t'DEF-upper_arm.L' has translation animation that
-      will be discarded.\n\t'DEF-upper_arm.L' has scale animation that will be discarded.\n\t'DEF-upper_arm.L.001'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-forearm.L'
-      has scale animation that will be discarded.\n\t'DEF-forearm.L.001' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\t'DEF-hand.L'
-      has scale animation that will be discarded.\n\t'DEF-upper_arm.R' has translation
-      animation that will be discarded.\n\t'DEF-upper_arm.R' has scale animation
-      that will be discarded.\n\t'DEF-upper_arm.R.001' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'DEF-forearm.R' has scale
-      animation that will be discarded.\n\t'DEF-forearm.R.001' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'DEF-hand.R'
-      has scale animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -148,7 +39,123 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: rig|idle
+      takeName: rig|idle
+      internalID: 1599155768152908184
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig|mutlu
+      takeName: rig|mutlu
+      internalID: -7645222574638556642
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: rig|run
+      takeName: rig|run
+      internalID: -1186175002919557899
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "rig|\xFCzg\xFCn"
+      takeName: "rig|\xFCzg\xFCn"
+      internalID: -267461888034708249
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
